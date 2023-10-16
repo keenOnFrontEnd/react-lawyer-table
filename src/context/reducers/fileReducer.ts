@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
-import type { DataArrayType } from '../../types/types';
+import type { TransformedDataArrayType } from '../../types/types';
 import type { PayloadAction } from '@reduxjs/toolkit'
 
 export interface CounterState {
-  data: DataArrayType,
+  data: TransformedDataArrayType,
   isError: boolean,
 }
 
@@ -16,7 +16,7 @@ export const root = createSlice({
   name: 'root',
   initialState,
   reducers: {
-   setData: (state, action: PayloadAction<DataArrayType>) => {
+   setData: (state, action: PayloadAction<TransformedDataArrayType>) => {
     state.data = action.payload
    },
    errorHandler: (state,action: PayloadAction<boolean>) => {
