@@ -1,13 +1,13 @@
-import { DataArrayType, TransformedDataArrayType, TransformedTableRowType, tableRowType } from '../types/types';
+import { TransformedDataArrayType, TtransformedTableRow, TtableRow} from '../types/types';
 
 const dateRegex = /^(?:\d{4}-\d{2}-\d{2}|\d{2}\/\d{2}\/\d{4})$/
 const licenseNumberRegex = /^[0-9A-Za-z]{6}$/;
-const phoneRegex = /^(\+1)?[0-9]{10}$/
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 
-const ValueValidation = (item: tableRowType, key: keyof tableRowType, items: Array<tableRowType>):boolean => {
+const ValueValidation = (item: TtableRow, key: keyof TtableRow, items: Array<TtableRow>):boolean => {
     let date = new Date()
-    let expireDate = (date > new Date(item['Expiration date']))
+    let expireDate = (new Date(item['Expiration date']) > date)
+
     switch (key) {
         case 'Full Name':
             return true
@@ -50,34 +50,29 @@ const ValueValidation = (item: tableRowType, key: keyof tableRowType, items: Arr
     }
 }
 
-export const transferDataRows = (items: Array<tableRowType>):TransformedDataArrayType => {
+export const transferDataRows = (items: Array<TtableRow>):TransformedDataArrayType => {
     let transferedArray: TransformedDataArrayType = []
     
     for (let item of items) {
         let newObj: any = {}
     
         for (const [key, value] of Object.entries(item)) {
-            const validKey = key as keyof tableRowType;
-            const validatedValue = item[validKey] as tableRowType[typeof validKey];
+            const validKey = key as keyof TtableRow;
+            const validatedValue = item[validKey] as TtableRow[typeof validKey];
 
             newObj[validKey] = {
                 value: validatedValue,
                 isValid: ValueValidation(item,validKey,items)
-            } as TransformedTableRowType[typeof validKey]
+            } as TtransformedTableRow[typeof validKey]
         }
     
         transferedArray.push(newObj);
     }
-
-    console.log(transferedArray)
-
     return transferedArray
 }
 
 export const inititalRequiredValidation = (item: any) => {
-
     return (
-        typeof item === "object" &&
         (item['Full Name'].length && typeof item['Full Name'] === "string") &&
         (item?.Phone && (typeof item.Phone === "string" || typeof item.Phone === 'number')) &&
         (item.Email.length && typeof item.Email === "string")

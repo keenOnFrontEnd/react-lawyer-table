@@ -1,16 +1,16 @@
 
 
-export interface RootState {
-  root: State
+export interface IRootState {
+  root: IState
 }
 
-export interface State {
+export interface IState {
   data: TransformedDataArrayType,
   headers: string[]
   isError: boolean,
 }
 
-export interface tableRowType {
+export interface TtableRow{
     'Full Name': string;
     'Phone': string | number;
     'Email': string;
@@ -23,12 +23,12 @@ export interface tableRowType {
     'License number': string;
 }
 
-export type DataArrayType = Array<tableRowType>
+export type DataArrayType = Array<TtableRow>
 
-export type TransformedTableRowType = {
-    [K in keyof tableRowType]: {
-      value: tableRowType[K];
+export type TtransformedTableRow= {
+    [K in keyof TtableRow]: {
+      value: TtableRow[K];
       isValid: boolean;
     };
   };
-export type TransformedDataArrayType = Array<TransformedTableRowType>
+export type TransformedDataArrayType = Array<TtransformedTableRow>
