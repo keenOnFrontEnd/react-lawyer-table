@@ -3,9 +3,9 @@ import { useDropzone } from 'react-dropzone';
 import s from './dropzone.module.css'
 import { useDispatch } from 'react-redux';
 import Papa from 'papaparse'
-import { errorHandler, setData } from '../context/reducers/fileReducer';
+import { errorHandler, setData, setHeaders } from '../context/reducers/fileReducer';
 import { TransformedDataArrayType,DataArrayType } from '../types/types';
-import { isValidTableRow, typeValidation } from './validation';
+import { transferDataRows, inititalRequiredValidation } from './validation';
 
 export const DropFileZone = () => {
     
@@ -25,17 +25,13 @@ export const DropFileZone = () => {
             header: true,
             dynamicTyping: true,
             complete: (results) => {
-                if(!Array.isArray(results.data) || !results.data.every(typeValidation)) {
+                if(!Array.isArray(results.data) || !results.data.every(inititalRequiredValidation)) {
                     dispatch(errorHandler(true))
                 }
-                
-
-                // if (Array.isArray(results.data) && results.data.every(typeValidation)) {
-                //     let res: TransformedDataArrayType = results.data as TransformedDataArrayType;
-                //     dispatch(setData(res));
-                //   } else {
-                //     dispatch(errorHandler(true))
-                //   }
+                let rows :DataArrayType = results.data as DataArrayType
+                let headers: string[] = results.meta.fields as string[]
+                dispatch(setData(transferDataRows(rows)))
+                dispatch(setHeaders(headers))
             }
           })
         }
