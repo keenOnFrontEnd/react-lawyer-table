@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import type { IState, TransformedDataArrayType } from '../../types/types';
+import type { IState, TransformedDataArrayType } from '../types/types';
 import type { PayloadAction } from '@reduxjs/toolkit'
 
 

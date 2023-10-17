@@ -1,6 +1,6 @@
 import React from 'react'
 import Button from 'react-bootstrap/esm/Button'
-import { DropFileZone } from '../utils/Dropzone'
+import { DropFileZone } from './Dropzone'
 
 export const ImportData = () => {
 

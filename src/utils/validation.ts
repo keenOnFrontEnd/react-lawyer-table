@@ -59,7 +59,6 @@ export const transferDataRows = (items: Array<TtableRow>):TransformedDataArrayTy
         for (const [key, value] of Object.entries(item)) {
             const validKey = key as keyof TtableRow;
             const validatedValue = item[validKey] as TtableRow[typeof validKey];
-
             newObj[validKey] = {
                 value: validatedValue,
                 isValid: ValueValidation(item,validKey,items)

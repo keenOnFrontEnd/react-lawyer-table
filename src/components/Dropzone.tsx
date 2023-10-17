@@ -3,9 +3,9 @@ import { useDropzone } from 'react-dropzone';
 import s from './dropzone.module.css'
 import { useDispatch } from 'react-redux';
 import Papa from 'papaparse'
-import { errorHandler, setData, setHeaders } from '../context/reducers/fileReducer';
+import { errorHandler, setData, setHeaders } from '../context/fileReducer';
 import { DataArrayType } from '../types/types';
-import { transferDataRows, inititalRequiredValidation } from './validation';
+import { transferDataRows, inititalRequiredValidation } from '../utils/validation';
 
 export const DropFileZone = () => {
 

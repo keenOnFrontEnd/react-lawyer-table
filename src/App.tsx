@@ -1,6 +1,6 @@
 import React from 'react';
 import { ImportData } from './components/SelectCSVfile';
-import { Container, Row } from 'react-bootstrap';
+import { Container, Row,Col } from 'react-bootstrap';
 import s from './app.module.css'
 import { Table } from './components/TableComponent';
 
@@ -11,9 +11,9 @@ function App() {
       <Row>
         <ImportData />
       </Row>
-      <Row className='d-flex justify-content-center'>
+      <Col className='d-flex justify-content-center'>
         <Table />
-      </Row>
+      </Col>
     </Container>
   );
 }
