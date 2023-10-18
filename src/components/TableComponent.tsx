@@ -48,7 +48,7 @@ export const Table = () => {
               <td className={`${!item['License states'].isValid ? s.tableTdError : ''}`}>{convertStateNames(item['License states'].value)}</td>
               <td className={`${!item['Expiration date'].isValid ? s.tableTdError : ''}`}>{item['Expiration date'].value}</td>
               <td className={`${!item['License number'].isValid ? s.tableTdError : ''}`}>{item['License number'].value}</td>
-              <td>{res?.duplicateIndex}</td>
+              <td className='fw-bold'>{res?.duplicateIndex}</td>
             </tr>
           })}
         </tbody>
