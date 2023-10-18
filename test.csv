@@ -1,0 +1,11 @@
+Full Name,Phone,Email,Age,Experience,Yearly Income,Has children,License states,Expiration date,License number
+Michael Johnson,+14900991919,michael.j@example.com,45,47,80000.22,TRUE,CA|NY,2023-12-30,ABC123
+Sophia Smith,18901991919,sophia.s@examplecom,22,1,90000,FALSE,California|Texas,12/30/2023,DEF456
+Liam Brown,8900992919,liam.b@example.com,23,2,100000.00,TRUE,CA|NYC,04/30/2025,GHI789
+Emma Davis,+18900991211,emma.d@example.com,20,3,1200000.00,TRUE,NY,2024-12-30,JKL012
+Olivia Wilson,18900991211,olivia.w@example.com,21,4,1300000.00,TRUE,CA|NYC|Texas,12/30/2023,PQR678
+Lucas Lee,8900991211,lucas.l@example.com,22,5,1400000.00,FALSE,California|NY|TX,08/30/2024,STU901
+Ava White,+18900991212,ava.w@example.com,19,6,1500000.00,TRUE,CA|NY|NYC,04/30/2024,VWX234
+Logan Smith,18900991212,logan.s@example.com,20,7,1600000.00,TRUE,CA|TX,12/30/2025,JKL012
+Oliver Johnson,8900991219,oliver.j@example.com,21,8,1700000.00,TRUE,CA|NY|TX,12/30/2024,ABC456
+Harper Davis,+18900991119,harper.d@example.com,22,9,1800000.00,ффів,CA|NY|TX,12/30/2025,DEF789
