@@ -1,8 +1,3 @@
-export const FullName = 'Full Name' || 'full Name' || 'Full name' || 'full name'
-export const Phone = 'Phone' || 'phone'
-export const Email = 'Email' || 'email'
-
-
 export const stateMap: { [key: string]: string } = {
     "Alabama": "AL",
     "Alaska": "AK",

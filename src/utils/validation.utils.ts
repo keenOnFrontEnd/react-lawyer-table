@@ -1,4 +1,4 @@
-import { TransformedDataArrayType, TtransformedTableRow, TtableRow} from '../types/types';
+import { TransformedDataArrayType, TtransformedTableRow, TtableRow } from '../types/types';
 
 const dateRegex = /^(?:\d{4}-\d{2}-\d{2}|\d{2}\/\d{2}\/\d{4})$/
 const licenseNumberRegex = /^[0-9A-Za-z]{6}$/;
@@ -11,42 +11,54 @@ const ValueValidation = (item: TtableRow, key: keyof TtableRow, items: Array<Tta
     switch (key) {
         case 'Full Name':
             return true
+       
         case 'Phone':
             return true
+
         case 'Email':
             if(!emailRegex.test(item['Email'])) {
                 return false
             }
             return true
+
         case 'Age':
             if(item['Age'] <= 21) {
                 return false
             }
             return true
+
         case 'Experience':
             if(item['Experience'] > item['Age'] || item['Experience'] < 0) {
                 return false
             }
             return true
+
         case 'Expiration date':
             if(!dateRegex.test(item['Expiration date']) || !expireDate) {
                 return false
             }
             return true
+
         case 'Has children':
             return true
+
         case 'License number':
             if(!licenseNumberRegex.test(item['License number'])) {
                 return false
             } 
             return true
+
         case 'License states':
             return true
+
         case 'Yearly Income':
             if(item['Yearly Income'] > 1000000) {
                 return false
             }
             return true
+            
+        default: 
+          return false
     }
 }
 
@@ -72,8 +84,8 @@ export const transferDataRows = (items: Array<TtableRow>):TransformedDataArrayTy
 
 export const inititalRequiredValidation = (item: any) => {
     return (
-        (item['Full Name'].length && typeof item['Full Name'] === "string") &&
+        (item['Full Name']?.length && typeof item['Full Name'] === "string") &&
         (item?.Phone && (typeof item.Phone === "string" || typeof item.Phone === 'number')) &&
-        (item.Email.length && typeof item.Email === "string")
+        (item?.Email?.length && typeof item.Email === "string")
     );
 }

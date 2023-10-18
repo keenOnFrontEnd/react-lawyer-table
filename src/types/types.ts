@@ -1,5 +1,3 @@
-
-
 export interface IRootState {
   root: IState
 }
@@ -10,7 +8,7 @@ export interface IState {
   isError: boolean,
 }
 
-export interface TtableRow{
+export type TtableRow = {
     'Full Name': string;
     'Phone': string | number;
     'Email': string;
@@ -21,14 +19,14 @@ export interface TtableRow{
     'License states': string;
     'Expiration date': string;
     'License number': string;
-}
+  }
 
 export type DataArrayType = Array<TtableRow>
 
-export type TtransformedTableRow= {
-    [K in keyof TtableRow]: {
-      value: TtableRow[K];
-      isValid: boolean;
-    };
+export type TtransformedTableRow = {
+  [K in keyof TtableRow]: {
+    value: TtableRow[K];
+    isValid: boolean;
   };
+};
 export type TransformedDataArrayType = Array<TtransformedTableRow>

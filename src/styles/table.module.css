@@ -1,8 +1,9 @@
 .table  {
     width: 100vw;
-    height: calc(100dvh - 200px);
+    height: calc(100dvh - 18em);
     overflow: auto;
 }
+
 .table table {
     width: 100%;
     table-layout: fixed;
@@ -11,14 +12,12 @@
     text-align: left;
     font-size: 14px;
 }
+
 .table thead th {
     position: sticky;
     top: 0;
 }
-.table caption {
-    caption-side: top;
-    text-align: left;
-}
+
 .table th {
     border-bottom: 1px solid #DEDEDF;
     border-left: 1px solid #DEDEDF;
@@ -27,6 +26,7 @@
     color: #000000;
     padding: 5px;
 }
+
 .table td {
     border: 1px solid #DEDEDF;
     background-color: #FFFFFF;

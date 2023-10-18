@@ -2,10 +2,9 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { RootState } from '../context/store'
 
-import s from './table.module.css'
-import { DuplicateResult, findDuplicateInData } from '../utils/Duplicates'
-import { convertStateNames, transformPhoneNumber } from '../utils/transformValues'
-import { Email, FullName, Phone } from '../types/constants'
+import s from '../styles/table.module.css'
+import { DuplicateResult, findDuplicateInData } from '../utils/duplicates.utils'
+import { convertStateNames, transformPhoneNumber } from '../utils/transformValues.utils'
 
 export const Table = () => {
 
@@ -14,7 +13,7 @@ export const Table = () => {
   let headers = useSelector((state: RootState) => state.root.headers)
 
   if (isError) {
-    return <div className={`${s.error} w-50 d-flex justify-content-center align-items-center `}>
+    return <div className={`${s.error} d-flex justify-content-center align-items-center rounded `}>
       File format is not correct
     </div>
   }
@@ -39,9 +38,9 @@ export const Table = () => {
             let res: DuplicateResult = findDuplicates(item['Email'].value, item['Phone'].value, index)
             return <tr key={index}>
               <td>{index + 1}</td>
-              <td className={`${!item[FullName].isValid ? s.tableTdError : ''}`}>{item[FullName].value}</td>
-              <td className={`${res?.duplicate ? s.tableTdError : ''}`}>{transformPhoneNumber(item[Phone].value)}</td>
-              <td className={`${res?.duplicate ? s.tableTdError : ''}`}>{item[Email].value}</td>
+              <td className={`${!item['Full Name'].isValid ? s.tableTdError : ''}`}>{item['Full Name'].value}</td>
+              <td className={`${res?.duplicate ? s.tableTdError : ''}`}>{transformPhoneNumber(item['Phone'].value)}</td>
+              <td className={`${res?.duplicate ? s.tableTdError : ''}`}>{item['Email'].value}</td>
               <td className={`${!item['Age'].isValid ? s.tableTdError : ''}`}>{item['Age'].value}</td>
               <td className={`${!item['Experience'].isValid ? s.tableTdError : ''}`}>{item['Experience'].value}</td>
               <td className={`${!item['Yearly Income'].isValid ? s.tableTdError : ''}`}>{item['Yearly Income'].value.toFixed(2)}</td>

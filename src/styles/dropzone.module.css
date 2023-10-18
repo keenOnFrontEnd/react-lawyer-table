@@ -1,0 +1,8 @@
+.dragAndDrop {
+    height: 8dvh;
+    width: 60dvw !important;
+    max-width: 320px !important;
+    background: #daebef;
+    border-radius: 10px;
+    padding: 0 !important;
+  }

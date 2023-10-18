@@ -1,23 +1,17 @@
 import React, { useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
-import s from './dropzone.module.css'
+import s from '../styles/dropzone.module.css'
 import { useDispatch } from 'react-redux';
 import Papa from 'papaparse'
 import { errorHandler, setData, setHeaders } from '../context/fileReducer';
 import { DataArrayType } from '../types/types';
-import { transferDataRows, inititalRequiredValidation } from '../utils/validation';
+import { transferDataRows, inititalRequiredValidation } from '../utils/validation.utils';
 
 export const DropFileZone = () => {
 
-    const {
-        acceptedFiles,
-        getRootProps,
-        getInputProps,
-    } =
-        useDropzone({ maxFiles: 1 });
+    const { acceptedFiles, getRootProps, getInputProps } = useDropzone({ maxFiles: 1 });
 
     let dispatch = useDispatch()
-
 
     useEffect(() => {
         if (acceptedFiles.length > 0) {
@@ -47,9 +41,9 @@ export const DropFileZone = () => {
     }, [acceptedFiles])
 
     return (
-        <div className={`${s.dragAndDrop} mt-3 d-flex flex-column text-center justify-content-center align-items-center`}>
-            <div {...getRootProps()}>
-                <input {...getInputProps()} />
+        <div className={`${s.dragAndDrop} mb-3`}>
+            <div {...getRootProps()} className='w-100 h-100 d-flex text-center justify-content-center align-items-center'>
+                <input {...getInputProps()}/>
                 {acceptedFiles.length ? <div className="d-flex flex-column">{acceptedFiles[0].name}</div> : <p>Select or drag the csv file</p>}
             </div>
         </div>

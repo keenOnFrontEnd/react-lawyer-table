@@ -1,13 +1,10 @@
 import { TransformedDataArrayType} from "../types/types"; // Замініть на ваш шлях до файлів з типами
-import { transformPhoneNumber } from "./transformValues";
+import { transformPhoneNumber } from "./transformValues.utils";
 
 export interface DuplicateResult {
     duplicate: boolean;
     duplicateIndex?: number;
 }
-
-
-
 
 export const findDuplicateInData = (
     email: string,
